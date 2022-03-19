@@ -33,6 +33,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rubocop'
   gem 'rubocop-rails'
+  gem 'slim_lint', '~> 0.22.1'
   gem 'sqlite3', '~> 1.4'
 end
 
@@ -63,3 +64,4 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'rollbar'
+gem 'slim'

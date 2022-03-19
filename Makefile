@@ -6,6 +6,7 @@ test:
 	bin/rails test
 lint:
 	bundle exec rubocop
+	slim-lint app/views
 migrate:
 	bin/rails db:migrate
 seed:
