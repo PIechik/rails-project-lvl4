@@ -27,5 +27,11 @@ module ActiveSupport
       )
       # Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:github]
     end
+
+    def sign_in(user)
+      config_omniauth(user)
+      post auth_request_path(:github)
+      follow_redirect!
+    end
   end
 end
