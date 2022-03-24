@@ -20,4 +20,8 @@ module AuthManager
   def sign_out
     session[:user_id] = nil
   end
+
+  def require_authentication!
+    redirect_to root_path, notice: t('not_authorized') unless signed_in?
+  end
 end

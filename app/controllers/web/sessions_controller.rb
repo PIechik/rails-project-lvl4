@@ -18,10 +18,6 @@ module Web
 
     private
 
-    def auth_params
-      auth_hash['info']['email']
-    end
-
     def auth_hash
       request.env['omniauth.auth']
     end

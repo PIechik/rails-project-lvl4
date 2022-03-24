@@ -1,0 +1,16 @@
+= button_to t('new'), new_repository_path, method: :get, class: 'btn btn-primary'
+table.table.table-striped.table-hover.mt-4
+  thead
+    tr
+      th
+        = t('name')
+      th
+        = t('language')
+      th
+        = t('last_check')
+  tbody
+    - @repositories.each do |repository|
+      tr
+        th = repository.name
+        th = repository.language
+        th

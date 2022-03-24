@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: First
+  language: MyString
+  user: one
+  github_id: 1
+
+two:
+  name: Second
+  language: MyString
+  user: one
+  github_id: 2

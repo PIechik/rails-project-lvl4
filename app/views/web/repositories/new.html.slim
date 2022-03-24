@@ -1,0 +1,4 @@
+= simple_form_for @repository do |f|
+  = f.input :github_id, collection: @repositories_from_github, required: true, wrapper_html: { class: 'form-group mb-3' },
+  input_html: { class: 'form-control' }
+  = f.button :submit, class: 'btn btn-success'
