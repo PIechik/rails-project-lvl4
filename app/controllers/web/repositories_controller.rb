@@ -16,10 +16,8 @@ module Web
 
     def create
       @repository = current_user.repositories.build(repository_params)
-      # client = Octokit::Client.new access_token: current_user.token, per_page: 100
-      # repository_info = client.repo(repository_params[:github_id].to_i)
       @repository.save
-
+      RepositoryInfoJob.perform_later(@repository)
       redirect_to repositories_path
     end
 

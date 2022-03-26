@@ -6,8 +6,6 @@ one:
   user: one
   github_id: 1
 
-two:
-  name: Second
-  language: MyString
+without_info:
   user: one
   github_id: 2
