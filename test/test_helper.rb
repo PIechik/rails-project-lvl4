@@ -34,5 +34,20 @@ module ActiveSupport
       post auth_request_path(:github)
       follow_redirect!
     end
+
+    def stub_repositories_list_request(response)
+      uri_template = Addressable::Template.new('https://api.github.com/user/repos?per_page=100')
+      stub_request(:get, uri_template)
+        .with(
+          headers: {
+            'Accept' => 'application/vnd.github.v3+json',
+            'Authorization' => 'token MyString',
+            'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            'Content-Type' => 'application/json',
+            'User-Agent' => 'Octokit Ruby Gem 4.22.0'
+          }
+        )
+        .to_return(status: 200, body: response, headers: { 'Content-Type' => 'application/json' })
+    end
   end
 end
