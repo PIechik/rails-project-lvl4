@@ -5,4 +5,5 @@ class Repository < ApplicationRecord
 
   enumerize :language, in: %i[javascript]
   belongs_to :user
+  has_many :checks, dependent: :destroy
 end

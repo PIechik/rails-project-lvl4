@@ -15,6 +15,12 @@ module Web
       assert_response :success
     end
 
+    test 'should open show repository page' do
+      get repository_path(repositories(:one))
+
+      assert_response :success
+    end
+
     test 'should open new repository page' do
       response = file_fixture('repositories_info.json').read # TODO: change name
       stub_repositories_list_request(response)

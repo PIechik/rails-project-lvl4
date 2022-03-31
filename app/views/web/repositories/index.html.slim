@@ -11,6 +11,6 @@ table.table.table-striped.table-hover.mt-4
   tbody
     - @repositories.each do |repository|
       tr
-        th = repository.name
+        th = link_to repository.name, repository_path(repository)
         th = repository.language
         th
