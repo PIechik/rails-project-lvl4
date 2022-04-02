@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     get '/auth/:provider/callback', to: 'sessions#create', as: :callback_auth
     resources :sessions, only: :destroy
     resources :repositories, only: %i[index show new create] do
-      resources :checks, only: :create
+      scope module: :repositories do
+        resources :checks, only: %i[show create]
+      end
     end
   end
 end

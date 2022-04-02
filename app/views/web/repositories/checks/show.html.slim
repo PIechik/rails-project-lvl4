@@ -1,0 +1,31 @@
+h1 = t('check_title', id: @check.id)
+table.table
+  tbody
+    tr
+      td = t('created_at')
+      td = @check.created_at
+    tr
+      td = t('status')
+      td = @check.aasm_state
+    tr
+      td = t('check_passed')
+      td = @check.passed
+    tr
+      td = t('issues_count')
+      td = @check.issues_count
+table.table.table-hover.mb-5
+  thead
+    tr
+      th = t('message')
+      th = t('rule')
+      th = t('line_column')
+  tbody
+    - if @error_messages
+      - @error_messages.each do |file_path, messages|
+        tr
+          td colspan=3 = file_path
+          - messages.each do |message|
+            tr
+              td = message[:message]
+              td = message[:rule_id]
+              td = message[:location]

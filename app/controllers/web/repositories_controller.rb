@@ -10,6 +10,7 @@ module Web
 
     def show
       @repository = Repository.find(params[:id])
+      @check = Repository::Check.new
     end
 
     def new
