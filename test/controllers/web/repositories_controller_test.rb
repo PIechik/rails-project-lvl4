@@ -22,14 +22,13 @@ module Web
     end
 
     test 'should open new repository page' do
-      response = file_fixture('repositories_info.json').read # TODO: change name
+      response = File.read('test/fixtures/files/repositories_info.json')
       stub_repositories_list_request(response)
       get new_repository_path
 
+      response = JSON.parse(response)
       assert_response :success
-      assert_select 'select' do
-        assert_select 'option', response['repository']['name']
-      end
+      assert_select 'option', value: response['id']
     end
 
     test 'should create new repository' do

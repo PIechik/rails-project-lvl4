@@ -36,8 +36,7 @@ module ActiveSupport
     end
 
     def stub_repositories_list_request(response)
-      uri_template = Addressable::Template.new('https://api.github.com/user/repos?per_page=100')
-      stub_request(:get, uri_template)
+      stub_request(:get, 'https://api.github.com/user/repos?per_page=100')
         .with(
           headers: {
             'Accept' => 'application/vnd.github.v3+json',
