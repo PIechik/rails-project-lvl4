@@ -8,10 +8,7 @@ class CheckResultsParser
 
       messages = []
       offences_in_file['messages'].each do |message|
-        error = {}
-        error[:rule_id] = message['ruleId']
-        error[:message] = message['message']
-        error[:location] = "#{message['line']}:#{message['column']}"
+        error = { rule_id: message['ruleId'], message: message[:message], location: "#{message['line']}:#{message['column']}" }
         messages << error
       end
       errors_info[offences_in_file['filePath']] = messages
