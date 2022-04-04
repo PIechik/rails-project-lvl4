@@ -5,9 +5,9 @@ class ApplicationContainer
 
   if Rails.env.test?
     register :repository_checker, -> { RepositoryCheckerStub }
-    register :repository_cloner, -> { RepositoryClonerStub }
+    register :repository_manager, -> { RepositoryManagerStub }
   else
     register :repository_checker, -> { RepositoryChecker }
-    register :repository_cloner, -> { RepositoryCloner }
+    register :repository_manager, -> { RepositoryManager }
   end
 end

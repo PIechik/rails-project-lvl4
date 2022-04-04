@@ -11,8 +11,7 @@ module Web
       def create
         @repository = Repository.find(params[:repository_id])
         @check = @repository.checks.build
-        @check.save
-        CheckRepositoryJob.perform_later(@check)
+        CheckRepositoryJob.perform_later(@check) if @check.save
         redirect_to @repository
       end
     end

@@ -3,9 +3,18 @@ en:
   check_passed: Check passed
   check_title: "Check #%{id}"
   created_at: Created at
+  home: Home
   issues_count: Issues count
+  go_to_repository: Go to repository
+  language: Language
+  last_check_passed: Last check passed
   line_column: Line column
+  logout: Logout
   message: Message
+  name: Name
+  new: New
   not_authorized: You are not authorized to perform this action
+  repositories: Repositories
   rule: Rule
+  sign_in: Sign in
   status: Status

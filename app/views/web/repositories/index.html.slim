@@ -7,10 +7,10 @@ table.table.table-striped.table-hover.mt-4
       th
         = t('language')
       th
-        = t('last_check')
+        = t('last_check_passed')
   tbody
     - @repositories.each do |repository|
       tr
-        th = link_to repository.name, repository_path(repository)
-        th = repository.language
-        th
+        td = link_to repository.name, repository_path(repository)
+        td = repository.language
+        td = repository.checks.last&.passed

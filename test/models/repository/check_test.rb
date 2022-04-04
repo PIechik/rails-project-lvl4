@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-module Repository
+class Repository
   class CheckTest < ActiveSupport::TestCase
     # test "the truth" do
     #   assert true

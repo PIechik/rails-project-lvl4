@@ -1,10 +1,12 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: First
+  name: one
   language: MyString
   user: one
   github_id: 1
+  clone_url: MyString
+  full_name: one/one
 
 without_info:
   user: one

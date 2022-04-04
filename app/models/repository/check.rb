@@ -2,20 +2,20 @@
 
 class Repository
   class Check < ApplicationRecord
-    # include AASM
+    include AASM
 
-    # belongs_to :repository
-    # aasm do
-    #   state :created, initial: true
-    #   state :checking, :finished
+    belongs_to :repository
+    aasm do
+      state :created, initial: true
+      state :checking, :finished
 
-    #   event :check do
-    #     transitions from: :created, to: :checking
-    #   end
+      event :check do
+        transitions from: :created, to: :checking
+      end
 
-    #   event :finish do
-    #     transitions from: :checking, to: :finished
-    #   end
-    # end
+      event :finish do
+        transitions from: :checking, to: :finished
+      end
+    end
   end
 end

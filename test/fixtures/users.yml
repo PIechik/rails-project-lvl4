@@ -2,7 +2,7 @@
 
 one:
   email: one
-  nickname: MyString
+  nickname: one
   token: MyString
 
 two:

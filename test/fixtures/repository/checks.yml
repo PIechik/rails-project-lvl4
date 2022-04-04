@@ -1,9 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+created:
   repository: one
-  aasm_state: MyString
+  aasm_state: created
+  issues_count: 0
+  passed: false
+  output: null
 
-two:
-  repository: two
-  aasm_state: MyString
+finished:
+  repository: one
+  aasm_state: finished
+  issues_count: 9
+  passed: false
+  output: <%= JSON.generate(File.read('test/fixtures/files/repository_checker_results.json')) %>
