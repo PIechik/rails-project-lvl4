@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-class CheckResultsParser
+class JavascriptOutputParser
   def self.parse_linter_output(output)
     errors_info = {}
-    JSON.parse(output).each do |offences_in_file|
-      next if offences_in_file['messages'].empty?
+    JSON.parse(output).each do |offenses_in_file|
+      next if offenses_in_file['messages'].empty?
 
       messages = []
-      offences_in_file['messages'].each do |message|
-        error = { rule_id: message['ruleId'], message: message[:message], location: "#{message['line']}:#{message['column']}" }
+      offenses_in_file['messages'].each do |message|
+        error = { rule_id: message['ruleId'], message: message['message'], location: "#{message['line']}:#{message['column']}" }
         messages << error
       end
       errors_info[offences_in_file['filePath']] = messages

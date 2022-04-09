@@ -15,8 +15,9 @@ class RepositoryInfoJobTest < ActiveJob::TestCase
           'User-Agent' => 'Octokit Ruby Gem 4.22.0'
         }
       )
-      .to_return(status: 200, body: File.read('test/fixtures/files/repositories_info.json'), headers: { 'Content-Type' => 'application/json' })
+      .to_return(status: 200, body: File.read('test/fixtures/files/repository.json'), headers: { 'Content-Type' => 'application/json' })
     RepositoryInfoJob.perform_now(repository)
     assert { repository.name }
+    assert { repository.language }
   end
 end

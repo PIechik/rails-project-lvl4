@@ -1,15 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-created:
-  repository: one
+created_for_javascript:
+  repository: javascript
   aasm_state: created
-  issues_count: 0
-  passed: false
-  output: null
+
+created_for_ruby:
+  repository: ruby
+  aasm_state: created
 
 finished:
-  repository: one
+  repository: javascript
   aasm_state: finished
   issues_count: 9
   passed: false
-  output: <%= JSON.generate(File.read('test/fixtures/files/repository_checker_results.json')) %>
+  output: <%= JSON.generate(File.read('test/fixtures/files/javascript_check_results.json')) %>

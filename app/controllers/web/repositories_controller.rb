@@ -16,7 +16,12 @@ module Web
     def new
       @repository = current_user.repositories.build
       client = Octokit::Client.new access_token: current_user.token, per_page: 100
-      @repositories_from_github = client.repos
+      repositories = client.repos
+      permitted_languages = Repository.language.values
+      @permitted_repositories = []
+      repositories.each do |repository|
+        @permitted_repositories << repository if repository['language']&.downcase.in? permitted_languages
+      end
     end
 
     def create

@@ -16,11 +16,11 @@ module Web
 
       test 'should create new check' do
         assert_difference 'Repository::Check.count' do
-          post repository_checks_path(repositories(:one))
+          post repository_checks_path(repositories(:javascript))
         end
 
         assert_enqueued_with(job: CheckRepositoryJob)
-        assert_redirected_to repositories(:one)
+        assert_redirected_to repositories(:javascript)
       end
     end
   end

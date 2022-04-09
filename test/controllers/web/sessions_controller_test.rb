@@ -8,7 +8,7 @@ module Web
       config_omniauth(users(:one))
       post auth_request_path(:github)
       follow_redirect!
-      assert session[:user_id] == users(:one).id
+      assert { session[:user_id].eql? users(:one).id }
       assert_redirected_to root_path
     end
 
@@ -16,7 +16,7 @@ module Web
       sign_in(users(:one))
 
       delete session_path(users(:one))
-      assert_nil session[:user_id]
+      assert { !session[:user_id] }
       assert_redirected_to root_path
     end
   end

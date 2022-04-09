@@ -5,7 +5,6 @@ module Web
     class ChecksController < ApplicationController
       def show
         @check = Repository::Check.find(params[:id])
-        @error_messages = CheckResultsParser.parse_linter_output(@check.output) if @check.output
       end
 
       def create

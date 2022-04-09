@@ -21,8 +21,8 @@ table.table.table-hover.mb-5
       th = t('rule')
       th = t('line_column')
   tbody
-    - if @error_messages
-      - @error_messages.each do |file_path, messages|
+    - if @check.output.present?
+      - @check.output.each do |file_path, messages|
         tr
           td colspan=3 = file_path
           - messages.each do |message|
