@@ -11,6 +11,8 @@ created_for_ruby:
 finished:
   repository: javascript
   aasm_state: finished
+  reference_url: <%= Faker::Internet.url %>
+  reference_sha: <%= Faker::Crypto.sha1 %>
   issues_count: 9
   passed: false
-  output: <%= JSON.generate(File.read('test/fixtures/files/javascript_check_results.json')) %>
+  output: <%= File.read('test/fixtures/files/javascript_parsed_output.json') %>

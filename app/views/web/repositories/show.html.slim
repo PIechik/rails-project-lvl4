@@ -28,6 +28,8 @@ table.table.table-striped
           tr
             td = link_to check.id, repository_check_path(@repository, check)
             td = check.aasm_state
-            td
+            td 
+              - if check.reference_sha
+                = link_to check.reference_sha.truncate(10), check.reference_url
             td = check.passed
             td = check.created_at

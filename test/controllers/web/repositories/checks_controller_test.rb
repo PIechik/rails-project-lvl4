@@ -11,7 +11,7 @@ module Web
         get repository_check_path(repository_checks(:finished).repository, repository_checks(:finished))
 
         assert_response :success
-        assert_select 'td', JSON.parse(repository_checks(:finished).output)[0]
+        assert_select 'td', repository_checks(:finished).output[0]
       end
 
       test 'should create new check' do

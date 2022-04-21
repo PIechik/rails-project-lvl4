@@ -11,7 +11,7 @@ class JavascriptOutputParser
         error = { rule_id: message['ruleId'], message: message['message'], location: "#{message['line']}:#{message['column']}" }
         messages << error
       end
-      errors_info[offences_in_file['filePath']] = messages
+      errors_info[offenses_in_file['filePath']] = messages
     end
     errors_info
   end

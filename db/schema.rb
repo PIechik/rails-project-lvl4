@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_02_082025) do
+ActiveRecord::Schema.define(version: 2022_04_11_145003) do
 
   create_table "repositories", force: :cascade do |t|
     t.string "name"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2022_04_02_082025) do
     t.integer "issues_count", default: 0
     t.boolean "passed", default: false
     t.json "output"
+    t.string "reference_url"
+    t.string "reference_sha"
     t.index ["repository_id"], name: "index_repository_checks_on_repository_id"
   end
 
