@@ -10,6 +10,9 @@ module ActiveSupport
     # Run tests in parallel with specified workers
     # parallelize(workers: :number_of_processors)
 
+    setup do
+      queue_adapter.perform_enqueued_jobs = true
+    end
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
@@ -33,20 +36,6 @@ module ActiveSupport
       config_omniauth(user)
       post auth_request_path(:github)
       follow_redirect!
-    end
-
-    def stub_repositories_list_request(response)
-      stub_request(:get, 'https://api.github.com/user/repos?per_page=100')
-        .with(
-          headers: {
-            'Accept' => 'application/vnd.github.v3+json',
-            'Authorization' => 'token MyString',
-            'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-            'Content-Type' => 'application/json',
-            'User-Agent' => 'Octokit Ruby Gem 4.22.0'
-          }
-        )
-        .to_return(status: 200, body: response, headers: { 'Content-Type' => 'application/json' })
     end
   end
 end

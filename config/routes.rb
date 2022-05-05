@@ -12,4 +12,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  namespace :api do
+    resources :checks, only: :create
+  end
 end

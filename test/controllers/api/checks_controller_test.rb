@@ -4,8 +4,12 @@ require 'test_helper'
 
 module Api
   class ChecksControllerTest < ActionDispatch::IntegrationTest
-    # test "the truth" do
-    #   assert true
-    # end
+    test 'should create new check' do
+      repository = repositories(:javascript)
+      post api_checks_path, params: { repository: { id: repository.github_id } }
+
+      assert_performed_with(job: CheckRepositoryJob)
+      assert_response :success
+    end
   end
 end

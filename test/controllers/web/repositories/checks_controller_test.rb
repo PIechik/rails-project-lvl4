@@ -19,7 +19,7 @@ module Web
           post repository_checks_path(repositories(:javascript))
         end
 
-        assert_enqueued_with(job: CheckRepositoryJob)
+        assert_performed_with(job: CheckRepositoryJob)
         assert_redirected_to repositories(:javascript)
       end
     end
