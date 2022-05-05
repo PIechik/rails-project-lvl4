@@ -8,12 +8,6 @@ class RepositoryManager
     @repository_storage = Rails.root.join("tmp/repos/#{repository.full_name}")
   end
 
-  def fetch_last_commit
-    client = Octokit::Client.new access_token: repository.user.token, per_page: 100
-    commits = client.commits(repository.github_id)
-    { reference_url: commits.first['html_url'], reference_sha: commits.first['sha'] }
-  end
-
   def clone_repository
     Open3.capture3("git clone #{repository.clone_url} #{repository_storage}")
   end

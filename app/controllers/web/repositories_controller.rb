@@ -15,8 +15,7 @@ module Web
 
     def new
       @repository = current_user.repositories.build
-      client = Octokit::Client.new access_token: current_user.token, per_page: 100
-      repositories = client.repos
+      repositories = GithubApiService.list_repositories(current_user)
       permitted_languages = Repository.language.values
       @permitted_repositories = []
       repositories.each do |repository|

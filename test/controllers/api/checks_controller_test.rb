@@ -8,7 +8,7 @@ module Api
       repository = repositories(:javascript)
       post api_checks_path, params: { repository: { id: repository.github_id } }
 
-      assert_performed_with(job: CheckRepositoryJob)
+      assert_enqueued_with(job: CheckRepositoryJob)
       assert_response :success
     end
   end

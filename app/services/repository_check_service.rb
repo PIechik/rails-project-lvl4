@@ -21,7 +21,7 @@ class RepositoryCheckService
   end
 
   def prepare_repository
-    check.update(repository_manager.fetch_last_commit)
+    check.update(GithubApiService.fetch_last_commit(repository))
     repository_manager.clone_repository
     repository_manager.install_dependencies
   end

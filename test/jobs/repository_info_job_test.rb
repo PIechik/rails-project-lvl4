@@ -5,7 +5,7 @@ require 'test_helper'
 class RepositoryInfoJobTest < ActiveJob::TestCase
   test 'job updates repository info' do
     repository = repositories(:without_info)
-    stub_request(:get, 'https://api.github.com/repositories/2')
+    stub_request(:get, "https://api.github.com/repositories/#{repository.github_id}")
       .with(
         headers: {
           'Accept' => 'application/vnd.github.v3+json',
