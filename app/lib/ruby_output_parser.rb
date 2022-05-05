@@ -8,12 +8,15 @@ class RubyOutputParser
 
       messages = []
       offenses_in_file['offenses'].each do |offense|
-        error = { rule_id: offense['cop_name'], message: offense['message'], location: "#{offense['location']['line']}:#{offense['location']['column']}" }
-        messages << error
+        messages << error_description(offense)
       end
       errors_info[offenses_in_file['path']] = messages
     end
     errors_info
+  end
+
+  def self.error_description(offense)
+    { rule_id: offense['cop_name'], message: offense['message'], location: "#{offense['location']['line']}:#{offense['location']['column']}" }
   end
 
   def self.count_issues(output)

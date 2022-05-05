@@ -7,13 +7,16 @@ class JavascriptOutputParser
       next if offenses_in_file['messages'].empty?
 
       messages = []
-      offenses_in_file['messages'].each do |message|
-        error = { rule_id: message['ruleId'], message: message['message'], location: "#{message['line']}:#{message['column']}" }
-        messages << error
+      offenses_in_file['messages'].each do |offense|
+        messages << error_description(offense)
       end
       errors_info[offenses_in_file['filePath']] = messages
     end
     errors_info
+  end
+
+  def self.error_description(offense)
+    { rule_id: offense['ruleId'], message: offense['message'], location: "#{offense['line']}:#{offense['column']}" }
   end
 
   def self.count_issues(output)
