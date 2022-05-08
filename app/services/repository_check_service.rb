@@ -21,7 +21,8 @@ class RepositoryCheckService
   end
 
   def prepare_repository
-    check.update(GithubApiService.fetch_last_commit(repository))
+    last_commit = GithubApiService.new(repository.user.token).fetch_last_commit(repository.github_id)
+    check.update(last_commit)
     repository_manager.clone_repository
     repository_manager.install_dependencies
   end
