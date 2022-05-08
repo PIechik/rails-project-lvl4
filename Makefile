@@ -1,7 +1,6 @@
 install:
 	yarn install
 	bundle install
-	bin/rails webpacker:compile
 test:
 	bin/rails test
 lint:
