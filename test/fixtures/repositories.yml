@@ -1,21 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 javascript:
-  name: one
+  name: <%= Faker::Lorem.word %>
   language: javascript
   user: one
-  github_id: 1
-  clone_url: MyString
+  github_id: <%= Faker::Number.number(digits: 9) %>
+  clone_url: <%= Faker::Internet.url %>
   full_name: one/one
 
 ruby:
-  name: two
+  name: <%= Faker::Lorem.word %>
   language: ruby
   user: two
-  github_id: 1
-  clone_url: MyString
+  github_id: <%= Faker::Number.number(digits: 9) %>
+  clone_url: <%= Faker::Internet.url %>
   full_name: two/two
 
 without_info:
   user: one
-  github_id: 2
+  github_id: <%= Faker::Number.number(digits: 9) %>

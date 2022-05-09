@@ -25,9 +25,10 @@ module Web
 
     def create
       @repository = current_user.repositories.build(repository_params)
-      @repository.save
-      RepositoryInfoJob.perform_later(@repository)
-      CreateGithubWebhookJob.perform_later(@repository)
+      if @repository.save
+        RepositoryInfoJob.perform_later(@repository)
+        CreateGithubWebhookJob.perform_later(@repository)
+      end
       redirect_to repositories_path
     end
 

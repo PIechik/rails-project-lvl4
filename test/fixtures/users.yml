@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email: one
-  nickname: one
-  token: MyString
+  email: <%= Faker::Internet.email %>
+  nickname: <%= Faker::Internet.username %>
+  token: <%= Faker::Internet.uuid %>
 
 two:
-  email: two
-  nickname: MyString
-  token: MyString
+  email: <%= Faker::Internet.email %>
+  nickname: <%= Faker::Internet.username %>
+  token: <%= Faker::Internet.uuid %>

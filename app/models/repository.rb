@@ -3,7 +3,9 @@
 class Repository < ApplicationRecord
   extend Enumerize
 
-  enumerize :language, in: %i[javascript ruby]
   belongs_to :user
   has_many :checks, dependent: :destroy
+
+  enumerize :language, in: %i[javascript ruby]
+  validates :github_id, uniqueness: true
 end

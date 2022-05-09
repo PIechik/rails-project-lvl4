@@ -1,4 +1,9 @@
 en:
+  app_title: Github repository quality analyzer
+  app_description: 
+    This service runs linter checks on repositories. After signing in through GitHub you will be able to add repositories from your account.
+    Checks can be runned manually or automatically by pushing to your repository. If the linter check fails or offenses are detected then you will
+    recieve an email. Offenses will be displayed on a check show page.
   check: Check
   check_passed: Check passed
   check_title: "Check #%{id}"
