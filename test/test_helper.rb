@@ -25,27 +25,12 @@ module ActiveSupport
           }
         }
       )
-      # Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:github]
     end
 
     def sign_in(user)
       config_omniauth(user)
       post auth_request_path(:github)
       follow_redirect!
-    end
-
-    def stub_last_commit_request(github_id)
-      stub_request(:get, "https://api.github.com/repositories/#{github_id}/commits?per_page=100")
-        .with(
-          headers: {
-            'Accept' => 'application/vnd.github.v3+json',
-            'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-            'Authorization' => 'token MyString',
-            'Content-Type' => 'application/json',
-            'User-Agent' => 'Octokit Ruby Gem 4.22.0'
-          }
-        )
-        .to_return(status: 200, body: '', headers: {})
     end
   end
 end

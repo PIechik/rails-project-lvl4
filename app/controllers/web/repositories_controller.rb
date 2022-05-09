@@ -15,7 +15,7 @@ module Web
 
     def new
       @repository = current_user.repositories.build
-      repositories = GithubApiService.new(current_user.token).list_repositories
+      repositories = ApplicationContainer[:api_service].new(current_user.token).list_repositories
       permitted_languages = Repository.language.values
       @permitted_repositories = []
       repositories.each do |repository|
