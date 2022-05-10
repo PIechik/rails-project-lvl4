@@ -8,7 +8,6 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.3",
     "bootstrap": "5.0.0-beta2",
-    "dart-sass": "^1.25.0",
     "eslint": "^8.12.0",
     "jquery": "^3.6.0",
     "kcd-scripts": "^12.1.0",
@@ -17,6 +16,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "dart-sass": "^1.25.0",
     "sass": "^1.51.0",
     "sass-loader": "^10.2.1",
     "webpack": "^4.46.0",
