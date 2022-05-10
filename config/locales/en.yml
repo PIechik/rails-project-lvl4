@@ -15,6 +15,12 @@ en:
   last_check_passed: Last check passed
   line_column: Line column
   logout: Logout
+  mail:
+    failed:
+      subject: Linter check failed
+      title: Results of the check on %{full_name} repository 
+      message: Linter check failed or offenses were detected.
+      link: Go to check page
   message: Message
   name: Name
   new: New

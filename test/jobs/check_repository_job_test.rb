@@ -3,6 +3,8 @@
 require 'test_helper'
 
 class CheckRepositoryJobTest < ActiveJob::TestCase
+  include ActionMailer::TestHelper
+
   test 'should perform javascript repository check' do
     check = repository_checks(:created_for_javascript)
     CheckRepositoryJob.perform_now(check)
@@ -10,6 +12,7 @@ class CheckRepositoryJobTest < ActiveJob::TestCase
     assert { check.finished? }
     assert { !check.passed }
     assert { check.issues_count.eql? 9 }
+    assert_enqueued_email_with(RepositoryCheckMailer, :report_failed_check, args: { check: check })
   end
 
   test 'should perform ruby repository check' do
@@ -19,5 +22,6 @@ class CheckRepositoryJobTest < ActiveJob::TestCase
     assert { check.finished? }
     assert { !check.passed }
     assert { check.issues_count.eql? 2 }
+    assert_enqueued_email_with(RepositoryCheckMailer, :report_failed_check, args: { check: check })
   end
 end

@@ -1,0 +1,3 @@
+h3 = t('mail.failed.title', full_name: @repository.full_name)
+p = t('mail.failed.message')
+= link_to t('mail.failed.link'), repository_check_url(@repository, @check)
