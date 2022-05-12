@@ -8,4 +8,12 @@ class Repository < ApplicationRecord
 
   enumerize :language, in: %i[javascript ruby]
   validates :github_id, uniqueness: true
+
+  def self.permitted_repositories(user)
+    repositories = ApplicationContainer[:api_service].new(user.token).list_repositories
+    permitted_languages = language.values
+    repositories.select do |repository|
+      repository if repository['language']&.downcase.in? permitted_languages
+    end
+  end
 end

@@ -15,12 +15,7 @@ module Web
 
     def new
       @repository = current_user.repositories.build
-      repositories = ApplicationContainer[:api_service].new(current_user.token).list_repositories
-      permitted_languages = Repository.language.values
-      @permitted_repositories = []
-      repositories.each do |repository|
-        @permitted_repositories << repository if repository['language']&.downcase.in? permitted_languages
-      end
+      @permitted_repositories = Repository.permitted_repositories(current_user)
     end
 
     def create
