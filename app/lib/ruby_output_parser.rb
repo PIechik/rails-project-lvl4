@@ -2,6 +2,8 @@
 
 class RubyOutputParser
   def self.parse_linter_output(output)
+    return output if output.blank?
+
     errors_info = {}
     JSON.parse(output)['files'].each do |offenses_in_file|
       next if offenses_in_file['offenses'].empty?
@@ -20,6 +22,8 @@ class RubyOutputParser
   end
 
   def self.count_issues(output)
+    return 0 if output.blank?
+
     JSON.parse(output)['summary']['offense_count']
   end
 end
