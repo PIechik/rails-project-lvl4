@@ -3,7 +3,7 @@
 class RepositoryManagerStub
   attr_reader :repository, :repository_storage
 
-  def initialize(_repository); end
+  def initialize(_repository); end # rubocop:disable
 
   def fetch_last_commit
     { reference_url: Faker::Internet.url, reference_sha: Faker::Crypto.sha1 }
