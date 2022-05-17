@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 module AuthConcern
-  def self.included(base)
-    base.helper_method :signed_in?, :current_user
+  extend ActiveSupport::Concern
+
+  included do
+    helper_method :signed_in?, :current_user
   end
 
   def current_user
