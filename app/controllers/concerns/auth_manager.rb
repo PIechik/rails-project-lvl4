@@ -10,7 +10,7 @@ module AuthManager
   end
 
   def signed_in?
-    current_user ? true : false
+    current_user.present?
   end
 
   def sign_in(user)
