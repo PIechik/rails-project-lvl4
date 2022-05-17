@@ -6,7 +6,7 @@ module Api
   class ChecksControllerTest < ActionDispatch::IntegrationTest
     test 'should create new check' do
       repository = repositories(:javascript)
-      post api_checks_path, params: { repository: { id: repository.github_id } }
+      post api_checks_path, params: { repository: { full_name: repository.full_name } }
 
       assert_enqueued_with(job: CheckRepositoryJob)
       assert_response :success

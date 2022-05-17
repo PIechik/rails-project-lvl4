@@ -5,7 +5,7 @@ module Api
     skip_before_action :verify_authenticity_token
 
     def create
-      @repository = Repository.find_by(github_id: params[:repository][:id])
+      @repository = Repository.find_by(full_name: params[:repository][:full_name])
       @check = @repository.checks.build
       CheckRepositoryJob.perform_later(@check) if @check.save
       head :ok
