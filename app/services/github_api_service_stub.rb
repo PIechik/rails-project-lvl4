@@ -3,7 +3,7 @@
 class GithubApiServiceStub
   attr_reader :client
 
-  def initialize(token); end
+  def initialize(_token); end
 
   def fetch_last_commit(_github_id)
     { reference_url: Faker::Internet.url, reference_sha: Faker::Crypto.sha1 }
