@@ -23,6 +23,7 @@ module Web
 
     test 'should open new repository page' do
       get new_repository_path
+
       assert_response :success
     end
 
