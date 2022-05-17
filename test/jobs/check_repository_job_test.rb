@@ -10,9 +10,8 @@ class CheckRepositoryJobTest < ActiveJob::TestCase
     CheckRepositoryJob.perform_now(check)
 
     assert { check.finished? }
-    assert { !check.passed }
-    assert { check.issues_count.eql? 9 }
-    assert_enqueued_email_with(RepositoryCheckMailer, :report_failed_check, args: { check: check })
+    assert { check.passed }
+    assert { check.issues_count.eql? 0 }
   end
 
   test 'should perform ruby repository check' do
