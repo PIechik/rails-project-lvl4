@@ -25,8 +25,8 @@ table.table.table-hover.mb-5
       - @check.output.each do |file_path, messages|
         tr
           td colspan=3 = file_path
-          - messages.each do |message|
-            tr
-              td = message[:message]
-              td = message[:rule_id]
-              td = message[:location]
+        - messages.each do |message|
+          tr
+            td = message['message']
+            td = message['rule_id']
+            td = message['location']
