@@ -8,12 +8,12 @@ module Web
       @user.token = auth_hash['credentials']['token']
       @user.save
       sign_in(@user)
-      redirect_to root_path
+      redirect_to root_path, notice: t('logged_in')
     end
 
     def destroy
       sign_out
-      redirect_to root_path
+      redirect_to root_path, notice: t('logged_out')
     end
 
     private

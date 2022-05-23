@@ -3,8 +3,12 @@
 class RepositoryPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.where(user_id: user)
+      scope.where(user_id: user) if user
     end
+  end
+
+  def index?
+    user
   end
 
   def show?

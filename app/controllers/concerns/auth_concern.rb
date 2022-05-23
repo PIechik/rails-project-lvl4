@@ -18,6 +18,7 @@ module AuthConcern
   end
 
   def user_not_authorized
-    redirect_to (request.referer || root_path), notice: t('not_authorized')
+    flash[:alert] = t('not_authorized')
+    redirect_to root_path
   end
 end

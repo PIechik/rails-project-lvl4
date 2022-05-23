@@ -12,8 +12,12 @@ module Web
         @repository = Repository.find(params[:repository_id])
         @check = @repository.checks.build
         authorize @check
-        CheckRepositoryJob.perform_later(@check) if @check.save
-        redirect_to @repository
+        notice = 'failed'
+        if @check.save
+          CheckRepositoryJob.perform_later(@check)
+          notice = 'successfull'
+        end
+        redirect_to @repository, notice: t("check_creation.#{notice}")
       end
     end
   end
