@@ -3,7 +3,9 @@
 class RepositoryChecker
   def self.run_check(repository)
     commands = { 'javascript' => 'npx eslint', 'ruby' => 'rubocop' }
+    configs = { 'javascript' => '.eslint.json', 'ruby' => '.rubocop.yml' }
     repositories_storage = Rails.root.join("tmp/repos/#{repository.full_name}/")
-    Open3.capture3("cd #{repositories_storage} && #{commands[repository.language]} --format json").first
+    language = repository.language
+    Open3.capture3("#{commands[language]} #{repositories_storage} --config ./#{configs[language]} --format json").first
   end
 end

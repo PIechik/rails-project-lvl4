@@ -22,6 +22,7 @@ class RepositoryPolicy < ApplicationPolicy
   def create?
     user
   end
+
   private
 
   def author?
