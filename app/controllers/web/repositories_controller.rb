@@ -2,23 +2,25 @@
 
 module Web
   class RepositoriesController < ApplicationController
-    before_action :require_authentication!
-
     def index
-      @repositories = current_user.repositories
+      @repositories = policy_scope(Repository)
     end
 
     def show
       @repository = Repository.find(params[:id])
+      authorize(@repository)
+      authorize(@repository)
       @check = Repository::Check.new
     end
 
     def new
+      authorize Repository
       @repository = current_user.repositories.build
       @permitted_repositories = Repository.permitted_repositories(current_user)
     end
 
     def create
+      authorize Repository
       @repository = current_user.repositories.build(repository_params)
       if @repository.save
         RepositoryInfoJob.perform_later(@repository)

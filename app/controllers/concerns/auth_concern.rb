@@ -17,7 +17,7 @@ module AuthConcern
     session[:user_id] = nil
   end
 
-  def require_authentication!
-    redirect_to root_path, notice: t('not_authorized') unless signed_in?
+  def user_not_authorized
+    redirect_to (request.referer || root_path), notice: t('not_authorized')
   end
 end

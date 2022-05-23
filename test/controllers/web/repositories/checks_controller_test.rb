@@ -7,6 +7,10 @@ module Web
     class ChecksControllerTest < ActionDispatch::IntegrationTest
       include ActiveJob::TestHelper
 
+      setup do
+        sign_in(users(:one))
+      end
+
       test 'should open check page' do
         get repository_check_path(repository_checks(:finished).repository, repository_checks(:finished))
 
