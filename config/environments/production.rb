@@ -66,7 +66,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: ENV.fetch('APP_HOST') }
+  config.action_mailer.default_url_options = { host: ENV.fetch('BASE_URL') }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     user_name: ENV.fetch('MAIL_USERNAME'),
