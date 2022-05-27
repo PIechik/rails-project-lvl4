@@ -17,7 +17,11 @@ module Web
     def new
       authorize Repository
       @repository = current_user.repositories.build
-      @permitted_repositories = Repository.permitted_repositories(current_user)
+      repositories = ApplicationContainer[:api_service].new(current_user.token).list_repositories
+      permitted_languages = Repository.language.values
+      @permitted_repositories = repositories.select do |repository|
+        repository if repository['language']&.downcase.in?(permitted_languages) && !Repository.find_by(github_id: repository['id'])
+      end
     end
 
     def create
