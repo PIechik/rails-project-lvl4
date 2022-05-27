@@ -10,7 +10,6 @@ module Web
     def show
       @repository = Repository.find(params[:id])
       authorize(@repository)
-      authorize(@repository)
       @check = Repository::Check.new
     end
 
