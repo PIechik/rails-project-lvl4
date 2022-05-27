@@ -5,10 +5,6 @@ class RepositoryManagerStub
 
   def initialize(_repository); end # rubocop:disable
 
-  def fetch_last_commit
-    { reference_url: Faker::Internet.url, reference_sha: Faker::Crypto.sha1 }
-  end
-
   def clone_repository; end
 
   def install_dependencies; end
