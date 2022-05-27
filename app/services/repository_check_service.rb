@@ -33,7 +33,6 @@ class RepositoryCheckService
     last_commit = api_service.fetch_last_commit(repository.github_id)
     check.update(last_commit)
     repository_manager.clone_repository
-    repository_manager.install_dependencies
   end
 
   def parse_output(output)

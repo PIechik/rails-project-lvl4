@@ -7,7 +7,5 @@ class RepositoryManagerStub
 
   def clone_repository; end
 
-  def install_dependencies; end
-
   def remove_tmp_repository; end
 end

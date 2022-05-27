@@ -12,10 +12,6 @@ class RepositoryManager
     Open3.capture3("git clone #{repository.clone_url} #{repository_storage}")
   end
 
-  def install_dependencies
-    Open3.capture3("cd #{repository_storage} && npm install")
-  end
-
   def remove_tmp_repository
     Open3.capture3("rm -rf #{repository_storage}")
   end
