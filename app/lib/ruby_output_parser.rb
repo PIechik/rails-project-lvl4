@@ -18,7 +18,8 @@ class RubyOutputParser
   end
 
   def self.error_description(offense)
-    { rule_id: offense['cop_name'], message: offense['message'], location: "#{offense['location']['line']}:#{offense['location']['column']}" }
+    { rule_id: offense['cop_name'], message: offense['message'],
+      location: "#{offense['location']['line']}:#{offense['location']['column']}" }
   end
 
   def self.count_issues(output)

@@ -12,7 +12,8 @@ module Web
       end
 
       test 'should open check page' do
-        get repository_check_path(repository_checks(:finished).repository, repository_checks(:finished))
+        get repository_check_path(repository_checks(:finished).repository,
+                                  repository_checks(:finished))
 
         assert_response :success
         assert_select 'td', repository_checks(:finished).output[0]

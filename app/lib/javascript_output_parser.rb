@@ -16,7 +16,8 @@ class JavascriptOutputParser
   end
 
   def self.error_description(offense)
-    { rule_id: offense['ruleId'], message: offense['message'], location: "#{offense['line']}:#{offense['column']}" }
+    { rule_id: offense['ruleId'], message: offense['message'],
+      location: "#{offense['line']}:#{offense['column']}" }
   end
 
   def self.count_issues(output)
