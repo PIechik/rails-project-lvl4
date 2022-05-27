@@ -13,7 +13,7 @@ class Repository < ApplicationRecord
     repositories = ApplicationContainer[:api_service].new(user.token).list_repositories
     permitted_languages = language.values
     repositories.select do |repository|
-      repository if repository['language']&.downcase.in? permitted_languages
+      repository if repository['language']&.downcase.in?(permitted_languages) && !Repository.find_by(github_id: repository['id'])
     end
   end
 end
