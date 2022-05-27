@@ -8,6 +8,7 @@ class Repository < ApplicationRecord
 
   enumerize :language, in: %i[javascript ruby]
   validates :github_id, uniqueness: true
+  validates :github_id, presence: true
 
   def self.permitted_repositories(user)
     repositories = ApplicationContainer[:api_service].new(user.token).list_repositories

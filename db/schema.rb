@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_09_183956) do
+ActiveRecord::Schema.define(version: 2022_05_27_064057) do
 
   create_table "repositories", force: :cascade do |t|
     t.string "name"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2022_05_09_183956) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "github_id"
+    t.integer "github_id", null: false
     t.string "clone_url"
     t.string "full_name"
     t.index ["github_id"], name: "index_repositories_on_github_id", unique: true
