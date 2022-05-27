@@ -1,0 +1,3 @@
+= t('mail.errors_found.title', full_name: @repository.full_name)
+= t('mail.errors_found.message')
+= link_to t('mail.link'), repository_check_url(@repository, @check)

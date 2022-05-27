@@ -18,14 +18,15 @@ class RepositoryCheckService
     output = repository_checker.run_check(repository)
     parse_output(output)
     check.finish!
-    mail.deliver_later unless check.issues_count.zero?
+    mail.report_errors_found.deliver_later unless check.issues_count.zero?
     repository_manager.remove_tmp_repository
-  rescue StandardError => exception
+  rescue StandardError
     check.mark_as_failed!
+    mail.report_failed_check.deliver_later
   end
 
   def mail
-    RepositoryCheckMailer.with(check: check).report_failed_check
+    RepositoryCheckMailer.with(check: check)
   end
 
   def prepare_repository

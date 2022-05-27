@@ -21,11 +21,15 @@ en:
   logged_out: You are logged out
   logout: Logout
   mail:
+    link: Go to check page
     failed:
       subject: Linter check failed
       title: Results of the check on %{full_name} repository 
-      message: Linter check failed or offenses were detected.
-      link: Go to check page
+      message: Linter check failed with a runtime error.
+    errors_found:
+      subject: Lint errors found
+      title: Results of the check on %{full_name} repository 
+      message: Offenses were detected.
   message: Message
   name: Name
   new: New
