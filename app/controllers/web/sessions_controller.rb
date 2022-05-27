@@ -6,9 +6,13 @@ module Web
       @user = User.find_or_create_by(email: auth_hash['info']['email'])
       @user.nickname = auth_hash['info']['nickname']
       @user.token = auth_hash['credentials']['token']
-      @user.save
-      sign_in(@user)
-      redirect_to root_path, notice: t('logged_in')
+      if @user.save
+        sign_in(@user)
+        notice_message = 'logged_in'
+      else
+        notice_message = 'authorization_failed'
+      end
+      redirect_to root_path, notice: t(notice_message)
     end
 
     def destroy

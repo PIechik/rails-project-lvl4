@@ -21,6 +21,6 @@ class CheckRepositoryJobTest < ActiveJob::TestCase
     assert { check.finished? }
     assert { !check.passed }
     assert { check.issues_count.eql? 2 }
-    assert_enqueued_email_with(RepositoryCheckMailer, :report_failed_check, args: { check: check })
+    assert_enqueued_email_with(RepositoryCheckMailer, :report_errors_found, args: { check: check })
   end
 end
