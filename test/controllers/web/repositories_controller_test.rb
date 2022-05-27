@@ -32,6 +32,7 @@ module Web
         post repositories_path, params: { repository: { github_id: 3 } }
       end
 
+      assert { Repository.find_by(github_id: 3) }
       assert_enqueued_with(job: RepositoryInfoJob)
       assert_enqueued_with(job: CreateGithubWebhookJob)
       assert_redirected_to repositories_path

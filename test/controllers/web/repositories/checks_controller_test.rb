@@ -12,20 +12,21 @@ module Web
       end
 
       test 'should open check page' do
-        get repository_check_path(repository_checks(:finished).repository,
-                                  repository_checks(:finished))
+        check = repository_checks(:finished)
+        get repository_check_path(check.repository, check)
 
         assert_response :success
-        assert_select 'td', repository_checks(:finished).output[0]
       end
 
       test 'should create new check' do
+        repository = repositories(:javascript)
         assert_difference 'Repository::Check.count' do
-          post repository_checks_path(repositories(:javascript))
+          post repository_checks_path(repository)
         end
 
+        assert { Repository::Check.last.repository == repository }
         assert_enqueued_with(job: CheckRepositoryJob)
-        assert_redirected_to repositories(:javascript)
+        assert_redirected_to repository
       end
     end
   end
