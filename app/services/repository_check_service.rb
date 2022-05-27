@@ -13,13 +13,15 @@ class RepositoryCheckService
   end
 
   def run_check
-    prepare_repository
     check.check!
+    prepare_repository
     output = repository_checker.run_check(repository)
     parse_output(output)
     check.finish!
     mail.deliver_later unless check.issues_count.zero?
     repository_manager.remove_tmp_repository
+  rescue StandardError => exception
+    check.mark_as_failed!
   end
 
   def mail
